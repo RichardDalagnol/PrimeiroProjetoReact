@@ -1,6 +1,6 @@
-import styled, {keyframes, css} from 'styled-components';
+import styled, { keyframes, css } from "styled-components";
 
-export const Form  = styled.form`
+export const Form = styled.form`
   margin-top: 30px;
   display: flex;
   flex-direction: row;
@@ -8,7 +8,7 @@ export const Form  = styled.form`
   input {
     flex: 1;
     border-radius: 4px;
-    border: 1px solid #eeee;
+    border: 1px solid ${props => (props.error ? "#ff6b6b" : "#eee")};
     padding: 10px 15px;
     font-size: 16px;
   }
@@ -25,7 +25,7 @@ const rotate = keyframes`
 `;
 
 export const SubmitButton = styled.button.attrs(props => ({
-  type: 'submit',
+  type: "submit",
   disabled: props.loading,
 }))`
   background: #7159c1;
@@ -42,11 +42,13 @@ export const SubmitButton = styled.button.attrs(props => ({
     opacity: 0.6;
   }
 
-  ${props => props.loading && css`
-  svg{
-    animation: ${rotate} 2s linear infinite;
-  }
-  `}
+  ${props =>
+    props.loading &&
+    css`
+      svg {
+        animation: ${rotate} 2s linear infinite;
+      }
+    `}
 `;
 
 export const List = styled.ul`
@@ -54,21 +56,19 @@ export const List = styled.ul`
   margin-top: 30px;
 
   li {
-    padding: 15px  0;
+    padding: 15px 0;
     display: flex;
-    justify-content : space-between;
+    justify-content: space-between;
     align-items: center;
     flex-direction: row;
 
     & + li {
-    border-top: 1px solid #eee;
+      border-top: 1px solid #eee;
     }
 
-    a{
+    a {
       color: #7159c1;
       text-decoration: none;
     }
-
   }
-
 `;
